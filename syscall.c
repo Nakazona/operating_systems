@@ -136,7 +136,7 @@ static int (*syscalls[])(void) = {
 int
 print_name(char * name, int num)
 {
-    cprintf("%s -> %d\n", name, num);
+    cprintf("%s -> %d\n", name, proc->tf->eax);
     return 1;
 }
 
@@ -163,6 +163,7 @@ static char* syscallnames[] = {
 [SYS_mkdir]   "mkdir",
 [SYS_close]   "close",
 [SYS_halt]    "halt",
+[SYS_date]    "date",
 };
 #endif
 

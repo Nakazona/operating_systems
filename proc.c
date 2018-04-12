@@ -507,7 +507,7 @@ procdump(void)
   struct proc *p;
   char *state;
   uint pc[10];
-  cprintf("\nPID  State  Name   Elapsed   PCs\n");
+  cprintf("\nPID\tState\tName\tElapsed\tPCs\n");
 
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state == UNUSED)
@@ -522,11 +522,11 @@ procdump(void)
     int remainder = end_ticks % 1000;
     int elapsed = end_ticks / 1000;
 
-    cprintf("%d %s  %s %d.%d", p->pid, state, p->name, elapsed, remainder);
+    cprintf("%d\t%s\t%s\t%d.%d", p->pid, state, p->name, elapsed, remainder);
     if(p->state == SLEEPING){
       getcallerpcs((uint*)p->context->ebp+2, pc);
       for(i=0; i<10 && pc[i] != 0; i++)
-        cprintf(" %p", pc[i]);
+        cprintf("\t%p", pc[i]);
     }
     cprintf("\n");
   }
