@@ -1,6 +1,6 @@
 # Set flag to correct CS333 project number: 1, 2, ...
 # 0 == original xv6-pdx distribution functionality
-CS333_PROJECT ?= 1
+CS333_PROJECT ?= 2
 CS333_CFLAGS = 
 CS333_UPROGS =
 CS333_TPROGS =
@@ -18,13 +18,13 @@ endif
 ifeq ($(CS333_PROJECT), 2)
 CS333_CFLAGS += -DCS333_P1 -DUSE_BUILTINS -DCS333_P2
 CS333_UPROGS += _date _time _ps
-CS333_TPROGS += 
+CS333_TPROGS += _p2testsuite _testuidgid _ps_test
 endif
 
 ifeq ($(CS333_PROJECT), $(filter $(CS333_PROJECT), 3 4))
 CS333_CFLAGS += -DCS333_P1 -DUSE_BUILTINS -DCS333_P2 -DCS333_P3P4
 CS333_UPROGS += _date _time _ps
-CS333_TPROGS +=
+CS333_TPROGS += _p2testsuite _testuidgid
 endif
 
 ifeq ($(CS333_PROJECT), 5)
@@ -33,7 +33,7 @@ CS333_CFLAGS += -DUSE_BUILTINS -DCS333_P1 -DCS333_P2 \
 # if P3 and P4 functionality not desired
 # CS333_CFLAGS += -DCS333_P1 -DUSE_BUILTINS -DCS333_P2 -DCS333_P5
 CS333_UPROGS += _date _time _ps _chgrp  _chmod _chown
-CS333_TPROGS += # _p5-test _testsetuid
+CS333_TPROGS += _p2testsuite _testuidgid # _p5-test _testsetuid
 CS333_MKFSFLAGS += -DCS333_P2 -DCS333_P5
 endif
 
